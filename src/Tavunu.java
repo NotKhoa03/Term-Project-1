@@ -17,18 +17,25 @@ public class Tavunu
     private int birthYear;
     private int pava;
 
+    /* No-argument (default) and parameterized constructors. */
+
     public Tavunu() {
         name="";
-        birthYear = Integer.MIN_VALUE;
+        birthYear = 0;
         pava = 0;
     }
 
     public Tavunu(String name, int birthYear, int pava) {
-        super();
+  
         this.name = name;
         this.birthYear = birthYear;
         this.pava = pava;
     }
+
+    /* setName(name): gives the tavunu a new name. All tavunu names begin with the letters 'T' or 'D'.
+    If the desired new name does not meet this criterion, the method does not change the name and returns false.
+    Otherwise it changes the tavunu's name and returns true.
+     */
 
     public boolean setName(String name) {
         if(name == "")
@@ -48,10 +55,16 @@ public class Tavunu
         }
     }
 
+    /* getName(): returns the tavunu's name. */
 
     public String getName() {
         return name;
     }
+
+    /* spendPava(amount): decreases the amount of pava held by the tavunu.
+    If the amount is zero or less the method does not change the pava and returns false.
+    Otherwise it subtracts the amount from the tavunu's pava and returns true.
+     */
 
     public boolean spendPava(int pava) {
         if (pava >= 0 && pava <= this.pava) {
@@ -62,6 +75,11 @@ public class Tavunu
         }
     }
 
+    /* receivePava(amount): increases the amount of pava held by the tavunu.
+    If the amount is zero or less it does not change the pava and it returns false.
+    Otherwise it adds the amount to the tavunu's pava and returns true.
+     */
+
     public boolean receivePava(int pava) {
         if (pava >= 0 && pava <= this.pava) {
             this.pava += pava;
@@ -71,6 +89,8 @@ public class Tavunu
         }
     }
 
+    /* getPava(): returns the amount of pava held by this tavunu. */
+
     public int getPava() {
         return pava;
     }
@@ -78,11 +98,13 @@ public class Tavunu
     public int getBirthYear() {
         return birthYear;
     }
-
+                                                    /* Accessor and mutator for the year of their birth. Negative values are OK --- they correspond to BCE dates. */
 
     public void setBirthYear(int birthYear) {
         this.birthYear=birthYear;
     }
+
+    /* An appropriate toString() method */
 
     public String toString() {
         return name + " born in " + birthYear + " has " + pava + " pava.";
