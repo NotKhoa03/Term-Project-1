@@ -10,7 +10,7 @@
  * @author Your Name
  */
 import java.lang.String;
-public abstract class Tavunu
+public class Tavunu
 {
 
     protected String name;
@@ -105,7 +105,7 @@ public abstract class Tavunu
     }
 
     /* An appropriate toString() method */
-
+    @Override
     public String toString() {
         return name + " born in " + birthYear + " has " + pava + " pava.";
     }
