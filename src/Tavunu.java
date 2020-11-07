@@ -10,12 +10,12 @@
  * @author Your Name
  */
 import java.lang.String;
-public class Tavunu
+public abstract class Tavunu
 {
 
-    private String name;
-    private int birthYear;
-    private int pava;
+    protected String name;
+    protected int birthYear;
+    protected int pava;
 
     /* No-argument (default) and parameterized constructors. */
 
