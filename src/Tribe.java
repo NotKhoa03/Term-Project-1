@@ -10,7 +10,7 @@ public class Tribe {
         String name = "ddd";
         int birthyear = 0;
         int pava = 0;
-        char answer = '';
+        PrintWriter file = null;
         ArrayList<String> list = new ArrayList<>();
 
         while(choice != 6) {
@@ -66,7 +66,7 @@ public class Tribe {
 
                 case 4: {
                     try{
-                        PrintWriter file = new PrintWriter("File.txt");
+                        new PrintWriter("File.txt");
                         for (int i = 0; i < list.size(); i++)
                         {
                             file.println(list.get(i));
@@ -76,14 +76,31 @@ public class Tribe {
                     }
                     catch(Exception e)
                     {
-                        return;
+                        System.out.println("Exception?? how??");
                     }
 
                     System.out.println("Saved to file.");
                     break;
                 }
                 case 5: {
-                    System.out.println("There are some tribe members in memory, do you want to continue and lose the data?");
+                    /*System.out.println("There are some tribe members in memory, do you want to continue and lose the data?");
+                    char answer;
+                    try
+                    {
+                        Scanner fileInput = new Scanner(new File("File.txt"));
+                        while(fileInput.hasNextLine())
+                        {
+                            for (int k = 0; k < list.size(); k++)
+                            {
+                                list.add(k, fileInput.nextLine());
+                            }
+                        }
+                    }
+                    catch(Exception e) {
+                        return;
+                    }
+                    //Scanner scan = new Scanner(fileInput);
+*/
                     break;
                 }
                 case 6:
