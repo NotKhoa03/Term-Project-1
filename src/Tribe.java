@@ -29,7 +29,10 @@ public class Tribe {
                     System.out.println("Enter amount of pava:");
                     pava = sc.nextInt();
 
-                    System.out.println(name + " " + birthyear + " " + pava);
+                    try
+                    {
+                        Crode a = new Crode(name, birthyear, pava);
+                    }
                     break;
                 }
 
