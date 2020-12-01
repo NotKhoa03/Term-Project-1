@@ -1,13 +1,16 @@
 import java.util.*;
 import java.lang.*;
+import java.io.*;
 
 public class Tribe {
     public static void main(String[] args){
 
         int choice = 0;
+        int remove = 0;
         String name = "ddd";
         int birthyear = 0;
         int pava = 0;
+        char answer = '';
         ArrayList<String> list = new ArrayList<>();
 
         while(choice != 6) {
@@ -52,14 +55,30 @@ public class Tribe {
 
                 case 2: {
                     System.out.println("Enter the number of which member you want to remove:");
-                    displayArrayList(list);
+                    displayNumberedArrayList(list);
+                    remove = sc.nextInt();
+                    list.remove(remove-1);
                     break;
                 }
                 case 3:
-                    System.out.print(list);
+                    displayArrayList(list);
                     break;
 
                 case 4: {
+                    try{
+                        PrintWriter file = new PrintWriter("File.txt");
+                        for (int i = 0; i < list.size(); i++)
+                        {
+                            file.println(list.get(i));
+                        }
+
+                        file.close();
+                    }
+                    catch(Exception e)
+                    {
+                        return;
+                    }
+
                     System.out.println("Saved to file.");
                     break;
                 }
@@ -123,11 +142,19 @@ public class Tribe {
             return true;
     }
 
-    public static void displayArrayList(ArrayList<String> tobedisp){
+    public static void displayNumberedArrayList(ArrayList<String> tobedisp){
         for (int i  = 0; i < tobedisp.size(); i++)
         {
             System.out.println(i+1 + ". " + tobedisp.get(i));
         }
     }
+
+    public static void displayArrayList(ArrayList<String> tobedisp){
+        for (int i = 0; i < tobedisp.size(); i++)
+        {
+            System.out.println(tobedisp.get(i));
+        }
+    }
+
 
 }
