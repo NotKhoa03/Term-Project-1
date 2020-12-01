@@ -8,6 +8,7 @@ public class Tribe {
         String name = "ddd";
         int birthyear = 0;
         int pava = 0;
+        ArrayList<String> list = new ArrayList<>();
 
         while(choice != 6) {
             System.out.println("Choose from the following:");
@@ -29,18 +30,34 @@ public class Tribe {
                     System.out.println("Enter amount of pava:");
                     pava = sc.nextInt();
 
-                    try
+                    if(isCrode(birthyear, pava))
                     {
-                        Crode a = new Crode(name, birthyear, pava);
+                        list.add(name + " born in " + birthyear + " is a Crode with " + pava + " pava.");
                     }
+                    else if(isCrodeExalted(birthyear, pava))
+                    {
+                        list.add(name + " born in " + birthyear + " is an Exalted Crode with " + pava + " pava.");
+                    }
+                    else if(isAvo(pava))
+                    {
+                        list.add(name + " born in " + birthyear + " is an Avo with " + pava + " pava.");
+                    }
+                    else if(isBeele(pava))
+                    {
+                        list.add(name + " born in " + birthyear + " is a Beele with " + pava + " pava.");
+                    }
+
                     break;
                 }
 
                 case 2: {
-                    System.out.println("Enter which member you want to remove:");
+                    System.out.println("Enter the number of which member you want to remove:");
+                    displayArrayList(list);
                     break;
                 }
                 case 3:
+                    System.out.print(list);
+                    break;
 
                 case 4: {
                     System.out.println("Saved to file.");
@@ -54,4 +71,63 @@ public class Tribe {
             }
         }
     }
+
+    public static boolean isCrode(int birthYear, int pava)
+    {
+        if(pava <= 80)
+        {
+            return false;
+        }
+
+        if(birthYear%2 == 0)
+        {
+            return false;
+        }
+
+        else
+            return true;
+    }
+
+    public static boolean isCrodeExalted(int birthYear, int pava)
+    {
+        if(birthYear%2 == 1)
+        {
+            return false;
+        }
+
+        if(pava <= 80)
+        {
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public static boolean isAvo(int pava)
+    {
+        if(pava > 20)
+        {
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public static boolean isBeele(int pava)
+    {
+        if(pava < 21 || pava > 80)
+        {
+            return false;
+        }
+        else
+            return true;
+    }
+
+    public static void displayArrayList(ArrayList<String> tobedisp){
+        for (int i  = 0; i < tobedisp.size(); i++)
+        {
+            System.out.println(i+1 + ". " + tobedisp.get(i));
+        }
+    }
+
 }
