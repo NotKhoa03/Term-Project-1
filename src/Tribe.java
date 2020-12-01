@@ -10,8 +10,11 @@ public class Tribe {
         String name = "ddd";
         int birthyear = 0;
         int pava = 0;
-        PrintWriter file = null;
+        Scanner fileInput = null;
         ArrayList<String> list = new ArrayList<>();
+
+        //Lets the user add a new member to the Tavunu tribe. Asks the user to provide all the needed
+        // information for creating a new tribe member and then adds it to the tribe.
 
         while(choice != 6) {
             System.out.println("Choose from the following:");
@@ -25,7 +28,7 @@ public class Tribe {
                 case 1: {
                     System.out.println("Enter name of tavuna:");
                     name = sc.next();
-                    sc.nextLine();
+                    sc.nextLine(); //Takes the enter input
 
                     System.out.println("Enter birthyear:");
                     birthyear = sc.nextInt();
@@ -33,6 +36,12 @@ public class Tribe {
                     System.out.println("Enter amount of pava:");
                     pava = sc.nextInt();
 
+                    if(pava < 10)
+                    {
+                        pava = 10;                                  //each Tavunu needs 10 pava
+                    }
+
+                    //Checks which Tavunu class
                     if(isCrode(birthyear, pava))
                     {
                         list.add(name + " born in " + birthyear + " is a Crode with " + pava + " pava.");
@@ -57,7 +66,7 @@ public class Tribe {
                     System.out.println("Enter the number of which member you want to remove:");
                     displayNumberedArrayList(list);
                     remove = sc.nextInt();
-                    list.remove(remove-1);
+                    list.remove(remove-1); //-1 because the objects are numbered starting at 1
                     break;
                 }
                 case 3:
@@ -66,10 +75,10 @@ public class Tribe {
 
                 case 4: {
                     try{
-                        new PrintWriter("File.txt");
+                        PrintWriter file = new PrintWriter("File.txt");
                         for (int i = 0; i < list.size(); i++)
                         {
-                            file.println(list.get(i));
+                            file.println(list.get(i));                          // displays all objects
                         }
 
                         file.close();
@@ -83,24 +92,30 @@ public class Tribe {
                     break;
                 }
                 case 5: {
-                    /*System.out.println("There are some tribe members in memory, do you want to continue and lose the data?");
-                    char answer;
+                    System.out.println("There are some tribe members in memory, do you want to continue and lose the data? (Y/N)");
+                    char a;
+                    a = sc.next().charAt(0);
+                    if(a=='N'|| a=='n')
+                    {
+                        break;
+                    }
+
+
+                    list.clear();
                     try
                     {
-                        Scanner fileInput = new Scanner(new File("File.txt"));
-                        while(fileInput.hasNextLine())
-                        {
-                            for (int k = 0; k < list.size(); k++)
-                            {
-                                list.add(k, fileInput.nextLine());
-                            }
-                        }
+                        fileInput = new Scanner(new File("File.txt"));
                     }
                     catch(Exception e) {
-                        return;
+                        System.out.println("Exception?? how??");
                     }
-                    //Scanner scan = new Scanner(fileInput);
-*/
+
+                    while(fileInput.hasNextLine())
+                    {
+                        list.add(fileInput.nextLine());
+                    }
+
+
                     break;
                 }
                 case 6:
@@ -108,6 +123,7 @@ public class Tribe {
         }
     }
 
+    // Methods to check Tavunu class
     public static boolean isCrode(int birthYear, int pava)
     {
         if(pava <= 80)
@@ -159,13 +175,14 @@ public class Tribe {
             return true;
     }
 
+    //Displays objects in the ArrayList but by number
     public static void displayNumberedArrayList(ArrayList<String> tobedisp){
         for (int i  = 0; i < tobedisp.size(); i++)
         {
             System.out.println(i+1 + ". " + tobedisp.get(i));
         }
     }
-
+    //Displays object in the ArrayList
     public static void displayArrayList(ArrayList<String> tobedisp){
         for (int i = 0; i < tobedisp.size(); i++)
         {
