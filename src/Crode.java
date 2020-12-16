@@ -2,7 +2,7 @@ public class Crode extends Tavunu{
 
     public Crode(String name, int birthYear, int pava)
     {
-        super(name, 1, pava);
+        super(name, birthYear, pava);
         if(pava <= 80)
         {
             throw new IllegalArgumentException("invalid pava amount");
@@ -28,6 +28,6 @@ public class Crode extends Tavunu{
     }
     @Override
     public String toString() {
-        return name + " born in " + birthYear + " is a Crode with " + pava + " pava.";
+        return name + " born in " + birthYear + " is a Crode with " + pava + " pava." + "\n";
     }
 }

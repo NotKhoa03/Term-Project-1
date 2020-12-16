@@ -16,6 +16,6 @@ public class Avo extends Tavunu {
 
     @Override
     public String toString() {
-        return name + " born in " + birthYear + " is an Avo with " + pava + " pava.";
+        return name + " born in " + birthYear + " is an Avo with " + pava + " pava." + "\n";
     }
 }

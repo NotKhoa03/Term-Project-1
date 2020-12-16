@@ -11,6 +11,6 @@ public class Beele extends Tavunu {
     }
     @Override
     public String toString() {
-        return name + " born in " + birthYear + " is a Beele with " + pava + " pava.";
+        return name + " born in " + birthYear + " is a Beele with " + pava + " pava." + "\n";
     }
 }

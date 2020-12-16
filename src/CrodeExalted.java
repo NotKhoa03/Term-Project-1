@@ -1,7 +1,7 @@
 public class CrodeExalted extends Crode{
     public CrodeExalted(String name, int birthYear, int pava) {
         // pass 1 as birthYear to Crode ctor so name and pava are configured
-        super(name, 1, pava);
+        super(name, birthYear, pava);
 
         // then check birthYear parameter to see if we have a valid CrodeExalted
         if(birthYear%2 == 1)
@@ -32,6 +32,6 @@ public class CrodeExalted extends Crode{
     }
     @Override
     public String toString() {
-        return name + " born in " + birthYear + " is an Exalted Crode with " + pava + " pava.";
+        return name + " born in " + birthYear + " is an Exalted Crode with " + pava + " pava." + "\n";
     }
 }

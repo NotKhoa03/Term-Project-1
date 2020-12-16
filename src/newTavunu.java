@@ -6,6 +6,7 @@ public class newTavunu {
     String name = "";
     int birthyear = 0;
     int pava = 0;
+    Tavunu tavunu;
 
     Scanner sc = new Scanner(System.in);
 
@@ -30,6 +31,17 @@ public class newTavunu {
         System.out.println("Enter amount of pava:");
         pava = sc.nextInt();
 
+        if(pava < 10)
+        {
+            pava = 10;
+        }
+    }
+
+
+
+    public Tavunu returnTavunu()
+    {
+        return tavunu;
     }
 
     public String returnName()
@@ -46,7 +58,6 @@ public class newTavunu {
     {
         return pava;
     }
-
 
 
 }

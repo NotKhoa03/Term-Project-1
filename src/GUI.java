@@ -17,6 +17,7 @@ public class GUI implements ActionListener {
     int i = 1;
 
     newTavunu tav = new newTavunu(this, name, birthyear, pava);
+    Tavunu tavo;
     Function_File file = new Function_File(this);
 
     public static void main(String[] args){
@@ -88,6 +89,8 @@ public class GUI implements ActionListener {
     }
 
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -101,13 +104,43 @@ public class GUI implements ActionListener {
                 name = tav.returnName();
                 birthyear = tav.returnBirthYear();
                 pava = tav.returnPava();
-                
+
+                checkTribe(birthyear, pava);
+
+
+                //System.out.print(tavo.toString());
 
                 file.newFile(i);
+
+                textArea.setText(tavo.toString());
+                textArea.setEditable(false);
 
                 i++;
             } break;
         }
 
+    }
+
+    public void checkTribe(int birthYear, int pava){
+
+        if(pava > 80 && birthYear%2 == 1)
+        {
+            tavo = new Crode(name, birthyear, pava);
+        }
+
+        else if(birthYear%2 == 0 && pava > 80)
+        {
+            tavo = new CrodeExalted(name, birthyear, pava);
+        }
+
+        else if(pava <= 20)
+        {
+            tavo = new Avo(name, birthyear, pava);
+        }
+
+        else if(pava >= 21 || pava <= 80)
+        {
+            tavo = new Beele(name, birthyear, pava);
+        }
     }
 }
