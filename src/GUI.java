@@ -8,10 +8,11 @@ public class GUI implements ActionListener {
     JTextArea textArea;
     JScrollPane scrollPane;
     JMenuBar menuBar;
-    JMenu menuFile, menuHelp;
-    JMenuItem iOpen, iNew, iSaveAs, iQuit, iAbout;
+    JMenu menuFile, menuHelp, menuFormat, fontSize, font;
+    JMenuItem iOpen, iNew, iSaveAs, iQuit, iAbout, iFontArial, iFontCSMS, iFontTNR, iFontSize8, iFontSize12, iFontSize16, iFontSize20;
+
     boolean saveAs = false;
-    String name = "cool";
+    String name = "";
     int birthyear = 0;
     int pava = 0;
     boolean isTrue = true;
@@ -32,6 +33,9 @@ public class GUI implements ActionListener {
         createTextArea();
         createMenuBar();
         createFileMenu();
+
+        file.selectedFont = "Arial";
+        file.createFont(16);
 
         window.setVisible(true);
 
@@ -64,6 +68,9 @@ public class GUI implements ActionListener {
         menuHelp = new JMenu("Help");
         menuBar.add(menuHelp);
 
+        menuFormat = new JMenu("Format");
+        menuBar.add(menuFormat);
+
 
     }
 
@@ -93,6 +100,49 @@ public class GUI implements ActionListener {
         iAbout.addActionListener(this);
         iAbout.setActionCommand("About");
         menuHelp.add(iAbout);
+
+        fontSize = new JMenu("Font Size");
+        menuFormat.add(fontSize);
+
+        font = new JMenu("Font");
+        menuFormat.add(font);
+
+        iFontSize8 = new JMenuItem("Font Size: 8");
+        iFontSize8.addActionListener(this);
+        iFontSize8.setActionCommand("FontSize8");
+        fontSize.add(iFontSize8);
+
+        iFontSize12 = new JMenuItem("Font Size: 12");
+        iFontSize12.addActionListener(this);
+        iFontSize12.setActionCommand("FontSize12");
+        fontSize.add(iFontSize12);
+
+        iFontSize16 = new JMenuItem("Font Size: 16");
+        iFontSize16.addActionListener(this);
+        iFontSize16.setActionCommand("FontSize16");
+        fontSize.add(iFontSize16);
+
+        iFontSize20 = new JMenuItem("Font Size: 20");
+        iFontSize20.addActionListener(this);
+        iFontSize20.setActionCommand("FontSize20");
+        fontSize.add(iFontSize20);
+
+        iFontArial = new JMenuItem("Arial");
+        iFontArial.addActionListener(this);
+        iFontArial.setActionCommand("Arial");
+        font.add(iFontArial);
+
+        iFontCSMS = new JMenuItem("Comic Sans MS");
+        iFontCSMS.addActionListener(this);
+        iFontCSMS.setActionCommand("Comic Sans MS");
+        font.add(iFontCSMS);
+
+        iFontTNR = new JMenuItem("Times New Roman");
+        iFontTNR.addActionListener(this);
+        iFontTNR.setActionCommand("Times New Roman");
+        font.add(iFontTNR);
+
+
     }
 
 
@@ -149,6 +199,32 @@ public class GUI implements ActionListener {
             } break;
             case "About": {
                 file.about();
+            } break;
+
+            case "Arial":{
+                file.setFont(command);
+            }break;
+            case "Comic Sans MS":{
+                file.setFont(command);
+            }break;
+            case "Times New Roman":{
+                file.setFont(command);
+            }break;
+
+            case "FontSize8": {
+                file.createFont(8);
+            } break;
+
+            case "FontSize12": {
+                file.createFont(12);
+            } break;
+
+            case "FontSize16": {
+                file.createFont(16);
+            } break;
+
+            case "FontSize20": {
+                file.createFont(20);
             } break;
         }
 

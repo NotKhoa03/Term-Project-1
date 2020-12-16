@@ -1,7 +1,7 @@
 public class CrodeExalted extends Crode{
     public CrodeExalted(String name, int birthYear, int pava) {
         // pass 1 as birthYear to Crode ctor so name and pava are configured
-        super(name, birthYear, pava);
+        super(name, 1, pava);
 
         // then check birthYear parameter to see if we have a valid CrodeExalted
         if(birthYear%2 == 1)
