@@ -1,6 +1,8 @@
+import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 public class Function_File {
 
@@ -55,4 +57,39 @@ public class Function_File {
 
 
     }
+
+    public void saveAs(boolean saveAs){
+        if(saveAs) {
+            FileDialog fd = new FileDialog(gui.window, "Save", FileDialog.SAVE);
+            fd.setVisible(true);
+
+            if (fd.getFile() != null) {
+                fileName = fd.getFile();
+                fileAddress = fd.getDirectory();
+                gui.window.setTitle(fileName);
+            }
+
+            try {
+                FileWriter fw = new FileWriter(fileAddress + fileName);
+                fw.write(gui.textArea.getText());
+                fw.close();
+            } catch (Exception e) {
+                System.out.println("??");
+            }
+        }
+        else
+            System.out.println("Tavunu is already loaded, create a new one.");
+    }
+
+    public void quit(){
+        System.exit(0);
+    }
+
+    public void about(){
+        JOptionPane.showMessageDialog(null, "Made by Khoa Tonthat", "A Notepad to store Tavunu information", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+
+
+
 }

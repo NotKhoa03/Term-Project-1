@@ -9,10 +9,12 @@ public class GUI implements ActionListener {
     JScrollPane scrollPane;
     JMenuBar menuBar;
     JMenu menuFile, menuHelp;
-    JMenuItem iOpen, iNew, iSaveAs, iQuit;
+    JMenuItem iOpen, iNew, iSaveAs, iQuit, iAbout;
+    boolean saveAs = false;
     String name = "cool";
     int birthyear = 0;
     int pava = 0;
+    boolean isTrue = true;
 
     int i = 1;
 
@@ -86,6 +88,11 @@ public class GUI implements ActionListener {
         iQuit.addActionListener(this);
         iQuit.setActionCommand("Quit");
         menuFile.add(iQuit);
+
+        iAbout = new JMenuItem("About");
+        iAbout.addActionListener(this);
+        iAbout.setActionCommand("About");
+        menuHelp.add(iAbout);
     }
 
 
@@ -97,13 +104,28 @@ public class GUI implements ActionListener {
         String command = e.getActionCommand();
 
         switch(command){
-            case "Open": file.open(); break;
+            case "Open": {
+                file.open();
+                saveAs = false;
+                textArea.setEditable(false);
+            } break;
             case "New": {
-                tav.enterDetails();
 
-                name = tav.returnName();
-                birthyear = tav.returnBirthYear();
-                pava = tav.returnPava();
+
+                while(isTrue){
+                    tav.enterDetails();
+                    name = tav.returnName();
+                    birthyear = tav.returnBirthYear();
+                    pava = tav.returnPava();
+
+                    if (name.charAt(0) == 'T' || name.charAt(0) == 'D') {
+                        isTrue = false;
+                        break;
+                    }
+                    System.out.println("Enter a valid name");
+                }
+
+
 
                 checkTribe(birthyear, pava);
 
@@ -115,7 +137,18 @@ public class GUI implements ActionListener {
                 textArea.setText(tavo.toString());
                 textArea.setEditable(false);
 
+                saveAs = true;
+
                 i++;
+            } break;
+            case "Save As": {
+                file.saveAs(saveAs);
+            } break;
+            case "Quit":{
+                file.quit();
+            } break;
+            case "About": {
+                file.about();
             } break;
         }
 
@@ -143,4 +176,8 @@ public class GUI implements ActionListener {
             tavo = new Beele(name, birthyear, pava);
         }
     }
+
+
+
+
 }

@@ -21,7 +21,7 @@ public class newTavunu {
 
     public void enterDetails()
     {
-        System.out.println("Enter name of tavuna:");
+        System.out.println("Enter name of tavunu:");
         name = sc.next();
         sc.nextLine(); //Takes the enter input
 
