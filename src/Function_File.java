@@ -60,7 +60,7 @@ public class Function_File {
 
     }
 
-    public void saveAs(boolean saveAs){
+    public void saveAs(boolean saveAs){ // saveAs is used to check whether file has been loaded or if its a new one
         if(saveAs) {
             FileDialog fd = new FileDialog(gui.window, "Save", FileDialog.SAVE);
             fd.setVisible(true);

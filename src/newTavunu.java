@@ -19,6 +19,8 @@ public class newTavunu {
 
     }
 
+    //Used to get user input of Tavunu
+
     public void enterDetails()
     {
         System.out.println("Enter name of tavunu:");
